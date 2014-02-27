@@ -32,14 +32,28 @@ class Analyzer:
         texts = self._read_from_file()
         print("texts are %(texts)s" %locals() )
 
-        vectorizer = TfidfVectorizer(max_df=self.max_df, max_features=self.max_features, stop_words='english')
+        vectorizer = TfidfVectorizer(
+            max_df=self.max_df,
+            max_features=self.max_features,
+            stop_words='english'
+            )
         X = vectorizer.fit_transform(texts)
         print("X values are %(X)s" %locals() )
 
         if self.minibatch:
-            km = MiniBatchKMeans(n_clusters=self.num_clusters, init='k-means++', batch_size=1000, n_init=10, max_no_improvement=10, verbose=True)
+            km = MiniBatchKMeans(
+                n_clusters=self.num_clusters,
+                init='k-means++', batch_size=1000,
+                n_init=10, max_no_improvement=10,
+                verbose=True
+                )
         else:
-            km = KMeans(n_clusters=self.num_clusters, init='k-means++', n_init=1, verbose=True)
+            km = KMeans(
+                n_clusters=self.num_clusters,
+                init='k-means++',
+                n_init=1,
+                verbose=True
+                )
         km.fit(X)
         labels = km.labels_
 
