@@ -1,0 +1,5 @@
+{"event_type": "presence", "topic_seq": 12868790, "op": 0, "seq": 95218483, "timestamp": 1394559970, "assoc": false, "txt_file": "20140312-000.txt", "mac_str": "AABBCCDD0011", "tar_file": "20140312.tar.gz"}
+{"event_type": "presence", "topic_seq": 12868790, "op": 0, "seq": 95218483, "timestamp": 1394559970, "assoc": false, "txt_file": "20140312-000.txt", "mac_str": "BBCCDDEE1122", "tar_file": "20140312.tar.gz"}
+{"event_type": "rssi", "topic_seq": 72371461, "op": 1, "seq": 95218484, "timestamp": 1394559961, "rssi_val": 14, "txt_file": "20140312-000.txt", "mac_str": "BBCCDDEE1122", "rmac_str": "Shop15", "tar_file": "20140312.tar.gz"}
+{"event_type": "rssi", "topic_seq": 72371462, "op": 1, "seq": 95218485, "timestamp": 1394559946, "rssi_val": 26, "txt_file": "20140312-000.txt", "mac_str": "CCDDEEAA2233", "rmac_str": "Shop14", "tar_file": "20140312.tar.gz"}
+{"event_type": "rssi", "topic_seq": 72371463, "op": 1, "seq": 95218486, "timestamp": 1394560046, "rssi_val": 28, "txt_file": "20140312-000.txt", "mac_str": "CCDDEEAA2233", "rmac_str": "Shop13", "tar_file": "20140312.tar.gz"}
