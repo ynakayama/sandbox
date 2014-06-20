@@ -12,17 +12,17 @@ class Reducer
     stdin.each_line {|line|
       tar_file, mac_str, rmac_str, rssi_val, timestamp, humantime, time_diff, merge_flag = line.strip.split("\t")
 
-      if merge_flag == "+"
-        rmacs.push(rmac_str)
-        rvals.push(rssi_val)
-      else
-        rmacs.push(rmac_str)
-        rvals.push(rssi_val)
+      rmacs.push(rmac_str)
+      rvals.push(rssi_val)
+      unless merge_flag == "+"
         puts "#{tar_file}\t#{mac_str}\t#{rmacs.join(',')}\t#{rvals.join(',')}\t#{timestamp}\t#{humantime}\t#{time_diff}\n"
         rmacs = []
         rvals = []
       end
     }
+    if rmacs.length > 0
+      puts "#{tar_file}\t#{mac_str}\t#{rmacs.join(',')}\t#{rvals.join(',')}\t#{timestamp}\t#{humantime}\t#{time_diff}\n"
+    end
   end
 end
 
