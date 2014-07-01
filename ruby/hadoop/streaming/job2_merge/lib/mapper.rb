@@ -9,10 +9,8 @@ class Mapper
       tar_file, mac_str, rmac_str, rssi_val, timestamp, humantime, time_diff = line.strip.split("\t")
       diff = time_diff.to_i
 
-      if diff >= 0 and diff < 10
-        puts "#{tar_file}\t#{mac_str}\t#{rmac_str}\t#{rssi_val}\t#{timestamp}\t#{humantime}\t#{time_diff}\t+\n"
-      else
-        puts "#{tar_file}\t#{mac_str}\t#{rmac_str}\t#{rssi_val}\t#{timestamp}\t#{humantime}\t#{time_diff}\t-\n"
+      unless diff >= 0 and diff < 10
+        puts "#{tar_file},#{timestamp}\t#{mac_str}\t#{rmac_str}\t#{rssi_val}\t#{humantime}\t#{time_diff}\n"
       end
     }
   end
