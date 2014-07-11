@@ -34,5 +34,6 @@ plt.savefig("image.png")
 results = clf.predict(test_X)
 
 for result, feature in zip(results, test_X):
-    print(result, feature)
+    if result == 0
+        print(result, feature)
 

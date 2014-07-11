@@ -29,5 +29,6 @@ plot(data, eaten)
 labels = kmeans(data)
 
 for label, feature in zip(labels, data):
-    print(label, feature)
+    if label == 0:
+        print(label, feature)
 
