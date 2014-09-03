@@ -17,9 +17,9 @@ x = data.ix[:, 0].values
 y = data.ix[:, 1].values
 z = data.ix[:, 2].values
 
-def linreg(a, b):
-    slope, intercept, r_value, p_value, std_err = stats.linregress(a, b)
-    print(slope, intercept, r_value, p_value, std_err)
+linreg = lambda a, b: stats.linregress(a, b)
 
-linreg(x, z)
-linreg(y, z)
+slope, intercept, r_value, p_value, std_err = linreg(x, z)
+print(slope, intercept, r_value, p_value, std_err)
+
+print(linreg(y, z))
