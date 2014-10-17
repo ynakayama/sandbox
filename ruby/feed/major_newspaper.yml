@@ -23,7 +23,7 @@ plugins:
   - module: PublishFluentd
     config:
       host: localhost
-      port: 9998
+      port: 9999
       tag:  news.sankei
 
   - module: SubscriptionFeed
@@ -41,7 +41,7 @@ plugins:
   - module: PublishFluentd
     config:
       host: localhost
-      port: 9998
+      port: 9999
       tag:  news.asahi
 
   - module: SubscriptionFeed
@@ -61,7 +61,7 @@ plugins:
   - module: PublishFluentd
     config:
       host: localhost
-      port: 9998
+      port: 9999
       tag:  news.nikkei
 
   - module: SubscriptionFeed
@@ -77,6 +77,6 @@ plugins:
   - module: PublishFluentd
     config:
       host: localhost
-      port: 9998
+      port: 9999
       tag:  news.mainichi
 
