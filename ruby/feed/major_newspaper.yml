@@ -1,0 +1,82 @@
+global:
+  timezone: Asia/Tokyo
+  cache:
+    base: /tmp
+  log:
+    level: info
+
+plugins:
+  - module: SubscriptionFeed
+    config:
+      feeds:
+        - http://live.sankeibiz.jp/live/rss/schedules/latest/latestrss.xml
+        - http://www.sankeibiz.jp/rss/news/points.xml
+        - http://www.sankeibiz.jp/rss/news/flash.xml
+        - http://www.sankeibiz.jp/rss/news/business.xml
+        - http://www.sankeibiz.jp/rss/news/policy.xml
+        - http://www.sankeibiz.jp/rss/news/compliance.xml
+
+  - module: StoreFullText
+    config:
+      db: sankei.db
+
+  - module: PublishFluentd
+    config:
+      host: localhost
+      port: 9998
+      tag:  news.sankei
+
+  - module: SubscriptionFeed
+    config:
+      feeds:
+        - http://www3.asahi.com/rss/index.rdf
+        - http://www3.asahi.com/rss/national.rdf
+        - http://www3.asahi.com/rss/business.rdf
+        - http://www3.asahi.com/rss/science.rdf
+
+  - module: StoreFullText
+    config:
+      db: asahi.db
+
+  - module: PublishFluentd
+    config:
+      host: localhost
+      port: 9998
+      tag:  news.asahi
+
+  - module: SubscriptionFeed
+    config:
+      feeds:
+        - http://www.zou3.net/php/rss/nikkei2rss.php?head=main
+        - http://feed.nikkeibp.co.jp/rss/nikkeibp/subject.rdf
+        - http://feed.nikkeibp.co.jp/rss/nikkeibp/recommend.rdf
+        - http://feed.nikkeibp.co.jp/rss/nikkeibp/buzz.rdf
+        - http://feed.nikkeibp.co.jp/rss/nikkeibp/feature.rdf
+        - http://feed.nikkeibp.co.jp/rss/nikkeibp/index.rdf
+
+  - module: StoreFullText
+    config:
+      db: nikkei.db
+
+  - module: PublishFluentd
+    config:
+      host: localhost
+      port: 9998
+      tag:  news.nikkei
+
+  - module: SubscriptionFeed
+    config:
+      feeds:
+        - http://rss.rssad.jp/rss/mainichi/flash.rss
+        - http://mainichi.jp/rss/etc/opinion.rss
+
+  - module: StoreFullText
+    config:
+      db: mainichi.db
+
+  - module: PublishFluentd
+    config:
+      host: localhost
+      port: 9998
+      tag:  news.mainichi
+
