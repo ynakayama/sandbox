@@ -9,12 +9,20 @@ plugins:
   - module: SubscriptionFeed
     config:
       feeds:
-        - http://live.sankeibiz.jp/live/rss/schedules/latest/latestrss.xml
         - http://www.sankeibiz.jp/rss/news/points.xml
         - http://www.sankeibiz.jp/rss/news/flash.xml
         - http://www.sankeibiz.jp/rss/news/business.xml
         - http://www.sankeibiz.jp/rss/news/policy.xml
         - http://www.sankeibiz.jp/rss/news/compliance.xml
+
+  - module: FilterIgnore
+    config:
+      link:
+        - rssad
+
+  - module: FilterSort
+    config:
+      sort: desc
 
   - module: StoreFullText
     config:
@@ -26,6 +34,8 @@ plugins:
       port: 9999
       tag:  news.sankei
 
+  - module: FilterClear
+
   - module: SubscriptionFeed
     config:
       feeds:
@@ -33,6 +43,15 @@ plugins:
         - http://www3.asahi.com/rss/national.rdf
         - http://www3.asahi.com/rss/business.rdf
         - http://www3.asahi.com/rss/science.rdf
+
+  - module: FilterIgnore
+    config:
+      link:
+        - rssad
+
+  - module: FilterSort
+    config:
+      sort: desc
 
   - module: StoreFullText
     config:
@@ -44,6 +63,8 @@ plugins:
       port: 9999
       tag:  news.asahi
 
+  - module: FilterClear
+
   - module: SubscriptionFeed
     config:
       feeds:
@@ -53,6 +74,15 @@ plugins:
         - http://feed.nikkeibp.co.jp/rss/nikkeibp/buzz.rdf
         - http://feed.nikkeibp.co.jp/rss/nikkeibp/feature.rdf
         - http://feed.nikkeibp.co.jp/rss/nikkeibp/index.rdf
+
+  - module: FilterIgnore
+    config:
+      link:
+        - rssad
+
+  - module: FilterSort
+    config:
+      sort: desc
 
   - module: StoreFullText
     config:
@@ -64,11 +94,22 @@ plugins:
       port: 9999
       tag:  news.nikkei
 
+  - module: FilterClear
+
   - module: SubscriptionFeed
     config:
       feeds:
         - http://rss.rssad.jp/rss/mainichi/flash.rss
         - http://mainichi.jp/rss/etc/opinion.rss
+
+  - module: FilterIgnore
+    config:
+      link:
+        - rssad
+
+  - module: FilterSort
+    config:
+      sort: desc
 
   - module: StoreFullText
     config:
