@@ -143,14 +143,6 @@ def transform_prefs(prefs)
   result
 end
 
-def shared_items(prefs, person1, person2)
-  shared_items_h = Hash.new
-  prefs[person1].each do |k,v|
-    shared_items_h[k] = 1 if prefs[person2].include?(k)
-  end
-  shared_items_h
-end
-
 def shared_items_a(prefs, person1, person2)
   prefs[person1].keys & prefs[person2].keys
 end
