@@ -1,0 +1,26 @@
+#!/bin/sh
+
+test -n "$1" || exit 1
+test -n "$1" && TARGET_BRANCH=$1
+
+MAX_ERROR_CODE=0
+TARGET_PATH=$HOME/local/git/directbatch
+DEPLOY_PATH=/home/s$TARGET_BRANCH/app
+
+test -d $TARGET_PATH || exit 2
+test -d $DEPLOY_PATH || exit 2
+
+cd $TARGET_PATH
+git checkout $TARGET_BRANCH
+git pull
+RETURN_CODE=$?
+test $RETURN_CODE -gt $MAX_ERROR_CODE && MAX_ERROR_CODE=$RETURN_CODE
+script/deploy s$TARGET_BRANCH
+RETURN_CODE=$?
+test $RETURN_CODE -gt $MAX_ERROR_CODE && MAX_ERROR_CODE=$RETURN_CODE
+git checkout master
+git pull
+RETURN_CODE=$?
+test $RETURN_CODE -gt $MAX_ERROR_CODE && MAX_ERROR_CODE=$RETURN_CODE
+
+echo "Return code is $MAX_ERROR_CODE."

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+test -n "$1" || exit 1
+test -n "$1" && TARGET_BRANCH=$1
+
+MAX_ERROR_CODE=0
+TARGET_PATH=/var/www/flask/$TARGET_BRANCH
+
+test -d $TARGET_PATH || exit 2
+
+sudo chown -R sysadmin:sysadmin $TARGET_PATH
+RETURN_CODE=$?
+test $RETURN_CODE -gt $MAX_ERROR_CODE && MAX_ERROR_CODE=$RETURN_CODE
+
+cd $TARGET_PATH
+git checkout $TARGET_BRANCH
+git pull
+RETURN_CODE=$?
+test $RETURN_CODE -gt $MAX_ERROR_CODE && MAX_ERROR_CODE=$RETURN_CODE
+
+sudo systemctl restart httpd.service
+RETURN_CODE=$?
+test $RETURN_CODE -gt $MAX_ERROR_CODE && MAX_ERROR_CODE=$RETURN_CODE
+
+echo "Return code is $MAX_ERROR_CODE."
