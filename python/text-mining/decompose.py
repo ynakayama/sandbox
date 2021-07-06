@@ -1,8 +1,5 @@
 import sys
 import os
-import json
-import re
-from collections import OrderedDict
 import MeCab
 
 
@@ -10,8 +7,6 @@ class Analyzer:
 
     def __init__(self, args):
         self.path = args[1]
-        self.exclude_list = []
-        self.category_num = 0
 
     def tagger(self):
         return MeCab.Tagger('-d /usr/local/lib/mecab/dic/ipadic')
@@ -19,7 +14,7 @@ class Analyzer:
     def preprocessing(self, sentence):
         return sentence.rstrip()
 
-    def start(self):
+    def get_nouns(self):
         tagger = self.tagger()
         with open(self.path) as fd:
             nouns = []
@@ -37,7 +32,7 @@ if __name__ == '__main__':
     if sys.version_info > (version):
         if len(sys.argv) > argsmin:
             analyzer = Analyzer(sys.argv)
-            noun = analyzer.start()
+            noun = analyzer.get_nouns()
             print(noun)
         else:
             print("This program needs at least %(argsmin)s arguments" %
