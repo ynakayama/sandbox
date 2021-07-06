@@ -14,7 +14,7 @@ class Analyzer:
     def preprocessing(self, sentence):
         return sentence.rstrip()
 
-    def get_nouns(self):
+    def get_df(self):
         tagger = self.tagger()
         columns = ['surface', 'speech', 'subclass1', 'subclass2', 'subclass3', 'conjugation_type', 'conjugation_form', 'prototype', 'reading', 'pronunciation']
         df = pd.DataFrame(index=[], columns=columns)
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     if sys.version_info > (version):
         if len(sys.argv) > argsmin:
             analyzer = Analyzer(sys.argv)
-            df = analyzer.get_nouns()
+            df = analyzer.get_df()
             print(df.surface.head(10))
             print(df.speech.head(10))
             print(df.subclass1.head(10))
